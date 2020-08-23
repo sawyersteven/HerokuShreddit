@@ -3,12 +3,12 @@ import subprocess
 import sys
 import configparser
 import shutil
-import yaml
 
 PRAW_FILE = "./praw.ini"
 PRAW_USER = "default"
 CONFIG_FILE = "./shreddit.yml"
-ORIG_CONFIG_FILE = "./shreddit/shreddit.yml.example"
+
+ORIG_CONFIG_FILE = os.path.join(os.path.expanduser(), ".local", "lib", f"python{sys.version_info.major}.{sys.version_info.minor}", "site-packages", "shreddit", "shreddit.yml.example")
 
 
 def install_deps():
@@ -40,6 +40,7 @@ def create_praw_ini():
 
 
 def create_shreddit_json():
+    import yaml
     print("* Setting up Shreddit config")
     if os.path.exists(CONFIG_FILE):
         ans = input(f"Shreddit config already exists ({CONFIG_FILE}). Use this shreddit config? [Y/n]")
