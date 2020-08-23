@@ -14,7 +14,7 @@ ORIG_CONFIG_FILE = "./shreddit/shreddit.yml.example"
 def install_deps():
     print("* Installing requirements")
 
-    pip_exit = subprocess.check_call([sys.executable, "-m", "pip", "install", '-r', 'requirements.txt'])
+    pip_exit = subprocess.check_call([sys.executable, "-m", "pip", "install", "--user", "-r", "requirements.txt"])
 
     if pip_exit != 0:
         raise Exception("Pip exited with code " + pip_exit)
@@ -25,7 +25,7 @@ def create_praw_ini():
     if os.path.exists(PRAW_FILE):
 
         ans = input("praw.ini already exists. Use this praw config? [Y/n]")
-        if ans.lower() != 'n':
+        if ans.lower() != "n":
             return
         os.remove(PRAW_FILE)
 
@@ -43,7 +43,7 @@ def create_shreddit_json():
     print("* Setting up Shreddit config")
     if os.path.exists(CONFIG_FILE):
         ans = input(f"Shreddit config already exists ({CONFIG_FILE}). Use this shreddit config? [Y/n]")
-        if ans.lower() != 'n':
+        if ans.lower() != "n":
             return
         os.remove(CONFIG_FILE)
 
@@ -62,6 +62,6 @@ Shreddit setup complete.
 
 Remember to configure shreddit.yml in the text editor
 
-Use {os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), 'main.py')} as a target for a scheduled task.
+Use {os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), "main.py")} as a target for a scheduled task.
 https://help.pythonanywhere.com/pages/ScheduledTasks/
 """)
