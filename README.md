@@ -1,2 +1,2 @@
-# HerokuShreddit
-Script to run Shreddit routinely on Heroku Dynos
+# ShredditAnywhere
+Script to run Shreddit routinely on PythonAnywhere
